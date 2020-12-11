@@ -1,9 +1,15 @@
 {
   description = "NVIM nightly flake";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
+      flake = false;
+    };
+  };
 
-  outputs = { self, nixpkgs }: {
+  outputs = { self, nixpkgs, flake-compat }: {
     defaultPackage.x86_64-linux =
       with import nixpkgs { system = "x86_64-linux"; };
       with stdenv.lib;
