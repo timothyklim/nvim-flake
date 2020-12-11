@@ -31,7 +31,8 @@
         luvpath = "${luv}/lib/lua/${lua.luaversion}/luv.so";
       in
       stdenv.mkDerivation {
-        name = "nvim";
+        pname = "nvim";
+        version = "0.5.0-dev";
         src = fetchurl {
           url = "https://github.com/neovim/neovim/archive/00f60c2ce78fc1280e93d5a36bc7b2267d5f4ac6.tar.gz";
           sha256 = "sha256-0SAYN/iJI6CQMUyk2amLvfMQf5v0Vai5strFyfaiUwI=";
@@ -87,7 +88,6 @@
           "-DLIBLUV_LIBRARY=${luvpath}"
         ]
         ++ optional doCheck "-DBUSTED_PRG=${neovimLuaEnv}/bin/busted"
-        ++ optional (!lua.pkgs.isLuaJIT) "-DPREFER_LUA=ON"
         ;
 
         # triggers on buffer overflow bug while running tests
