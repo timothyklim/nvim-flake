@@ -40,8 +40,8 @@
         pname = "nvim";
         version = "0.5.0-dev";
         src = fetchurl {
-          url = "https://github.com/neovim/neovim/archive/82100a6bdb42cec30060d6c991ab78fd2331fa31.tar.gz";
-          sha256 = "sha256-GyrcSEWe0i/bm3E5cq8GDk0QpDILF+F903ov0keiaBM=";
+          url = "https://github.com/neovim/neovim/archive/0efbab5f5e670ca33ea4d0ed20d9702aab8d7de1.tar.gz";
+          sha256 = "sha256-yKK4C1QgETHP5YVEN/tQDxj9oL+CRCkVHSWAdKNN0bU=";
         };
         dontFixCmake = true;
         enableParallelBuilding = true;
