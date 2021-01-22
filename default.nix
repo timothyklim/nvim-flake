@@ -1,4 +1,3 @@
-{ ... }:
 let
   flake-compat = import
     (
