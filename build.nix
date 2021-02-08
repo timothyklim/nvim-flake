@@ -1,7 +1,7 @@
 { pkgs, src }:
 
 with pkgs;
-with stdenv.lib;
+with pkgs.lib;
 let
   doCheck = false;
   lua = luajit_2_1;

@@ -2,13 +2,13 @@
   description = "NVIM nightly flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-compat = {
       url = "github:edolstra/flake-compat";
       flake = false;
     };
     src = {
-      url = "github:neovim/neovim/1607dd071fe1685cf42b0182b8d1d72152af2c40";
+      url = "github:neovim/neovim/02a3c417945e7b7fc781906a78acbf88bd44c971";
       flake = false;
     };
   };
@@ -25,16 +25,15 @@
         type = "app";
         program = "${drv.pname or drv.name}${drv.passthru.exePath}";
       };
+      derivation = { inherit nvim; };
     in
     rec {
-      packages.${system}.nvim = nvim;
+      packages.${system} = derivation;
       defaultPackage.${system} = nvim;
       apps.${system}.nvim = mkApp { drv = nvim; };
       defaultApp.${system} = apps.nvim;
       legacyPackages.${system} = pkgs.extend overlay;
       nixosModule.nixpkgs.overlays = [ overlay ];
-      overlay = final: prev: {
-        nvim = nvim;
-      };
+      overlay = final: prev: derivation;
     };
 }
