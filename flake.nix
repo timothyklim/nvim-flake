@@ -8,7 +8,7 @@
       flake = false;
     };
     src = {
-      url = "github:neovim/neovim/02a3c417945e7b7fc781906a78acbf88bd44c971";
+      url = "github:neovim/neovim/e5bef5974e900001cb6ed302b39a6f5ddf48d9a4";
       flake = false;
     };
   };
@@ -35,5 +35,9 @@
       legacyPackages.${system} = pkgs.extend overlay;
       nixosModule.nixpkgs.overlays = [ overlay ];
       overlay = final: prev: derivation;
+      devShell.${system} = pkgs.mkShell {
+        name = "nvim-env";
+        buildInputs = [ nvim ];
+      };
     };
 }
