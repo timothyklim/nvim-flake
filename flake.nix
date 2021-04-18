@@ -8,7 +8,7 @@
       flake = false;
     };
     src = {
-      url = "github:neovim/neovim/e5bef5974e900001cb6ed302b39a6f5ddf48d9a4";
+      url = "github:neovim/neovim/nightly";
       flake = false;
     };
   };
